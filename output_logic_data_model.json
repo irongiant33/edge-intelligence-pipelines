@@ -1,0 +1,22 @@
+[
+  {
+    "key": "value",
+    "type": "DOUBLE",
+    "category": "TELEMETRY"
+  },
+  {
+    "key": "label",
+    "type": "STRING",
+    "category": "ATTRIBUTE"
+  },
+  {
+    "key": "from_input",
+    "type": "STRING",
+    "category": "ATTRIBUTE"
+  },
+  {
+    "key": "digitalIOPort1",
+    "type": "INT",
+    "category": "ATTRIBUTE"
+  }
+]

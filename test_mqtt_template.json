@@ -1,0 +1,74 @@
+{
+  "name": "test_mqtt",
+  "data": {
+    "dataSources": {
+      "input": {
+        "type": "MQTT",
+        "assetId": "1",
+        "dataSourceConfiguration": {
+          "port": null,
+          "secure": false,
+          "useWebSockets": false,
+          "clientId": "test_mqtt_client",
+          "assetId": "1",
+          "name": "endpoint_1883",
+          "endpoints": [
+            {
+              "clientId": "test_mqtt_client",
+              "port": "1883",
+              "credentials": [],
+              "name": "endpoint_1883",
+              "metrics": {
+                "test_mqtt_name": {
+                  "label": "test_mqtt_label",
+                  "datatype": "String",
+                  "topic": "test_mqtt_topic"
+                }
+              },
+              "secure": false,
+              "privateKey": null,
+              "serverCertificate": null
+            }
+          ]
+        },
+        "fields": [
+          {
+            "type": "subscription",
+            "key": "test_mqtt_name",
+            "source": "/endpoints/endpoint_1883/test_mqtt_client/test_mqtt_topic"
+          }
+        ]
+      }
+    },
+    "dataTarget": {
+      "type": "MQTT",
+      "dataTargetConfiguration": {
+        "connectors": [
+          {
+            "host": "192.168.200.6",
+            "port": 1883,
+            "secure": false,
+            "mqttQoS": 2,
+            "clientId": "ei",
+            "cleanSession": true,
+            "publish": {
+              "resultPath": {
+                "mqttRetain": false,
+                "mqttQos": 2,
+                "mqttTopic": "test_topic"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "outputModel": {
+      "test_mqtt_name": {
+        "addTimestamp": false,
+        "emit": true,
+        "targetPath": "test_mqtt_name",
+        "type": "STRING"
+      }
+    }
+  }
+}

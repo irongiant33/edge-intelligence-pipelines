@@ -1,0 +1,82 @@
+{
+  "name": "test_mqtt_data-logic",
+  "data": {
+    "dataSources": {
+      "input": {
+        "type": "MQTT",
+        "assetId": "1",
+        "dataSourceConfiguration": {
+          "port": null,
+          "secure": false,
+          "useWebSockets": false,
+          "clientId": "test_mqtt_client",
+          "assetId": "1",
+          "name": "endpoint_1883",
+          "endpoints": [
+            {
+              "clientId": "test_mqtt_client",
+              "port": "1883",
+              "credentials": [],
+              "name": "endpoint_1883",
+              "metrics": {
+                "test_mqtt_name": {
+                  "label": "test_mqtt_label",
+                  "datatype": "String",
+                  "topic": "test_mqtt_topic"
+                }
+              },
+              "secure": false,
+              "privateKey": null,
+              "serverCertificate": null
+            }
+          ]
+        },
+        "fields": [
+          {
+            "type": "subscription",
+            "key": "test_mqtt_name",
+            "source": "/endpoints/endpoint_1883/test_mqtt_client/test_mqtt_topic"
+          }
+        ]
+      }
+    },
+    "dataTarget": {
+      "type": "MQTT",
+      "dataTargetConfiguration": {
+        "connectors": [
+          {
+            "host": "192.168.200.6",
+            "port": 1883,
+            "secure": false,
+            "mqttQoS": 0,
+            "clientId": "ei",
+            "cleanSession": true,
+            "publish": {
+              "resultPath": {
+                "mqttRetain": false,
+                "mqttQos": 1,
+                "mqttTopic": "test_topic"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "outputModel": [
+      {
+        "key": "value",
+        "type": "DOUBLE",
+        "category": "TELEMETRY"
+      }
+    ],
+    "scriptedDataLogic": {
+      "enableCloudCommands": false,
+      "parameters": {
+        "INVOKE_ON_NEW_DATA": true
+      },
+      "productive": true,
+      "script": "\u001bbytes:ZnVuY3Rpb24gcmVhZERpZ2l0YWxJTyhkZXZpY2VQYXRoKQp7CiAgICB0cnkKICAgIHsKICAgICAgICB2YXIgZmlsZSA9IG9wZW4oZGV2aWNlUGF0aCwgInIiKTsKICAgICAgICBpZighZmlsZSkKICAgICAgICB7CiAgICAgICAgICAgIGxvZ2dlci5lcnJvcigiRmFpbGVkIHRvIG9wZW4gZGlnaXRhbCBJTyBkZXZpY2U6ICIgKyBkZXZpY2VQYXRoKTsKICAgICAgICAgICAgcmV0dXJuIG51bGw7CiAgICAgICAgfQoKICAgICAgICB2YXIgdmFsdWUgPSBmaWxlLnJlYWQoMSk7CiAgICAgICAgZmlsZS5jbG9zZSgpOwoKICAgICAgICBpZih2YWx1ZSA9PT0gJzAnIHx8IHZhbHVlID09PSAnMScpCiAgICAgICAgewogICAgICAgICAgICByZXR1cm4gcGFyc2VJbnQodmFsdWUsIDEwKTsKICAgICAgICB9CiAgICAgICAgZWxzZQogICAgICAgIHsKICAgICAgICAgICAgbG9nZ2VyLmVycm9yKCJVbmV4cGVjdGVkIGRpZ2l0YWwgSU8gdmFsdWUgcmVhZDogIiArIHZhbHVlKTsKICAgICAgICAgICAgcmV0dXJuIG51bGw7CiAgICAgICAgfQogICAgfQogICAgY2F0Y2goZSkKICAgIHsKICAgICAgICBsb2dnZXIuZXJyb3IoIkVycm9yIHJlYWRpbmcgZGlnaXRhbCBJTyBwb3J0OiAiICsgZS5tZXNzYWdlKTsKICAgICAgICByZXR1cm4gbnVsbDsKICAgIH0KfQoKZnVuY3Rpb24gb25fdXBkYXRlKCkKewogICAgdmFyIGRpb1ZhbHVlID0gcmVhZERpZ2l0YWxJTygiL2Rldi9kaW8tMSIpOwogICAgb3V0cHV0LnZhbHVlID0gTWF0aC5yYW5kb20oKTsKICAgIG91dHB1dC5sYWJlbCA9ICJkYXRhIGxvZ2ljIjsKICAgIG91dHB1dC5mcm9tX2lucHV0ID0gaW5wdXQudGVzdF9tcXR0X25hbWU7CiAgICBpZihkaW9WYWx1ZSAhPSBudWxsKQogICAgewogICAgICAgIG91dHB1dC5kaWdpdGFsSU9Qb3J0MSA9IGRpb1ZhbHVlOwogICAgfQoKICAgIG91dHB1dC5wdWJsaXNoKCk7Cn0KCmZ1bmN0aW9uIG9uX3RpbWVfdHJpZ2dlcigpIHsKICAvLyBUaW1lLWJhc2VkIHRyaWdnZXIgbG9naWMgCn0=",
+      "invokeEvery": 250
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "http_test",
+  "data": {
+    "dataSources": {
+      "input": {
+        "type": "MQTT",
+        "assetId": "2",
+        "dataSourceConfiguration": {
+          "port": null,
+          "secure": false,
+          "useWebSockets": false,
+          "clientId": "test_mqtt_client",
+          "assetId": "2",
+          "name": "endpoint_1883",
+          "endpoints": [
+            {
+              "clientId": "test_mqtt_client",
+              "port": "1883",
+              "credentials": [],
+              "name": "endpoint_1883",
+              "metrics": {
+                "test_mqtt_name": {
+                  "label": "test_mqtt_label",
+                  "datatype": "String",
+                  "topic": "test_mqtt_topic"
+                }
+              },
+              "secure": false,
+              "privateKey": null,
+              "serverCertificate": null
+            }
+          ]
+        },
+        "fields": [
+          {
+            "type": "subscription",
+            "key": "test_mqtt_name",
+            "source": "/endpoints/endpoint_1883/test_mqtt_client/test_mqtt_topic"
+          }
+        ]
+      }
+    },
+    "dataTarget": {
+      "type": "TESTING",
+      "dataTargetConfiguration": {}
+    },
+    "outputModel": {},
+    "scriptedDataLogic": {
+      "enableCloudCommands": false,
+      "parameters": {
+        "INVOKE_ON_NEW_DATA": true
+      },
+      "productive": true,
+      "script": "\u001bbytes:Ly8gR2xvYmFsIHBlcnNpc3RlbnQgc3RhdGUgKHN1cnZpdmVzIGFjcm9zcyBvbl91cGRhdGUgY2FsbHMpDQp2YXIgYWxsRElPc0FyZU9uID0gZmFsc2U7ICAvLyBzdGFydCBhc3N1bWluZyBhbGwgb2ZmDQoNCi8vIEhlbHBlcjogU2VuZCBQT1NUIHRvIHRvZ2dsZSBvbmUgRElPIChhc3luYyB3aXRoIGNhbGxiYWNrKQ0KZnVuY3Rpb24gdG9nZ2xlU2luZ2xlRElPKGNoYW5uZWwsIHN0YXRlKSB7DQogICAgdmFyIHN0YXR1c1ZhbHVlID0gc3RhdGUgPyAiMSIgOiAiMCI7DQogICAgdmFyIGpzb25QYXlsb2FkID0gSlNPTi5zdHJpbmdpZnkoew0KICAgICAgICBzdGF0dXM6IHN0YXR1c1ZhbHVlLA0KICAgICAgICBudW06IGNoYW5uZWwudG9TdHJpbmcoKQ0KICAgIH0pOw0KDQogICAgdmFyIGZvcm1Cb2R5ID0gImluc2VydD0iICsgZW5jb2RlVVJJQ29tcG9uZW50KGpzb25QYXlsb2FkKTsNCg0KICAgIC8vIFJlcGxhY2Ugd2l0aCB5b3VyIGFjdHVhbCBEb2NrZXIgd2ViIFVJIFVSTCAodGVzdCBjb25uZWN0aXZpdHkgZmlyc3QhKQ0KICAgIHZhciB1cmwgPSAiaHR0cDovLzE5Mi4xNjguMC4zOjgwODAvdXBkYXRlLnBocCI7ICAvLyBleGFtcGxlOiBEb2NrZXIgaG9zdCBJUC9wb3J0OyBhZGp1c3QgYXMgbmVlZGVkDQoNCiAgICB2YXIgaGVhZGVycyA9IHsNCiAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQiLA0KICAgICAgICAiWC1SZXF1ZXN0ZWQtV2l0aCI6ICJYTUxIdHRwUmVxdWVzdCINCiAgICB9Ow0KDQogICAgZnVuY3Rpb24gcG9zdENhbGxiYWNrKGVyciwgcmVzKSB7DQogICAgICAgIGlmIChlcnIpIHsNCiAgICAgICAgICAgIGxvZ2dlci5lcnJvcigiRElPLSIgKyBjaGFubmVsICsgIiBQT1NUIGZhaWxlZDogIiArIGVyci5tZXNzYWdlKTsNCiAgICAgICAgfSBlbHNlIGlmIChyZXMuc3RhdHVzQ29kZSA+PSAyMDAgJiYgcmVzLnN0YXR1c0NvZGUgPCAzMDApIHsNCiAgICAgICAgICAgIGxvZ2dlci5pbmZvKCJESU8tIiArIGNoYW5uZWwgKyAiIHNldCB0byAiICsgc3RhdHVzVmFsdWUgKyAiIMOiwobCkiBzdWNjZXNzIChIVFRQICIgKyByZXMuc3RhdHVzQ29kZSArICIpIik7DQogICAgICAgICAgICAvLyBPcHRpb25hbDogbG9nZ2VyLmRlYnVnKCJSZXNwb25zZSBib2R5OiAiICsgcmVzLmJvZHkpOw0KICAgICAgICB9IGVsc2Ugew0KICAgICAgICAgICAgbG9nZ2VyLmVycm9yKCJESU8tIiArIGNoYW5uZWwgKyAiIGZhaWxlZDogSFRUUCAiICsgcmVzLnN0YXR1c0NvZGUgKyAiIC0gIiArIChyZXMuYm9keSB8fCAibm8gYm9keSIpKTsNCiAgICAgICAgfQ0KICAgIH0NCg0KICAgIGh0dHAucG9zdCh1cmwsIGZvcm1Cb2R5LCBoZWFkZXJzLCBwb3N0Q2FsbGJhY2spOw0KfQ0KDQpmdW5jdGlvbiBvbl91cGRhdGUoKSB7DQogICAgLy8gRmxpcCBzdGF0ZQ0KICAgIGFsbERJT3NBcmVPbiA9ICFhbGxESU9zQXJlT247DQogICAgdmFyIG5ld1N0YXRlID0gYWxsRElPc0FyZU9uOw0KDQogICAgbG9nZ2VyLmluZm8oIlRvZ2dsaW5nIGFsbCBESU9zIC0gIiArIChuZXdTdGF0ZSA/ICJPTiIgOiAiT0ZGIikpOw0KDQogICAgLy8gVHJpZ2dlciB0b2dnbGUgZm9yIGVhY2ggY2hhbm5lbA0KICAgIHRvZ2dsZVNpbmdsZURJTygxLCBuZXdTdGF0ZSk7DQogICAgdG9nZ2xlU2luZ2xlRElPKDIsIG5ld1N0YXRlKTsNCiAgICB0b2dnbGVTaW5nbGVESU8oMywgbmV3U3RhdGUpOw0KICAgIHRvZ2dsZVNpbmdsZURJTyg0LCBuZXdTdGF0ZSk7DQoNCiAgICAvLyBPcHRpb25hbDogcHVibGlzaCBkdW1teSBvdXRwdXQgaWYgeW91ciBwaXBlbGluZSBleHBlY3RzIHNvbWV0aGluZw0KICAgIC8vIG91dHB1dC52YWx1ZSA9IG5ld1N0YXRlID8gMSA6IDA7DQogICAgLy8gb3V0cHV0LnB1Ymxpc2goKTsNCn0NCg0KZnVuY3Rpb24gb25fdGltZV90cmlnZ2VyKCkgew0KICAgIC8vIFJldXNlIHNhbWUgdG9nZ2xlIGxvZ2ljIGZvciB0aW1lciBldmVudHMgKGlmIGVuYWJsZWQpDQogICAgb25fdXBkYXRlKCk7DQp9",
+      "invokeEvery": 1000
+    }
+  }
+}
